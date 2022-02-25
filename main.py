@@ -78,18 +78,22 @@ def make_sky(canvas, start_color='#4beff2', end_color='#3b46c4', tag='sky', dura
 
         # morning to night
         if setting == 'morning' and time_elapsed == duration:
-            print('\tchanging to night')
+            # reset conditionals
             start = time.time()
             setting = 'night'
+
+            # update gui
             utilities.update_fill_by_tag(canvas, tag, end_color)
             gui.update()
             continue
 
         # night to morning
         elif setting == 'night' and time_elapsed == duration:
-            print('\tchanging to morning')
+            # reset conditionals
             start = time.time()
             setting = 'morning'
+
+            # update gui
             utilities.update_fill_by_tag(canvas, tag, start_color)
             gui.update()
             continue
