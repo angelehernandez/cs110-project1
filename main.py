@@ -58,19 +58,14 @@ def make_landscape_object(canvas, center, size=100, tag='untagged', bark_color='
 
     # make leaves
 
-make_landscape_object(canvas, (200, 200), tag="tree1")
-
-# making the creature
-# make_creature(canvas, (200, 200), tag="monkey1", primary_color='#654321', secondary_color='#e6cc8c')
-
-def make_sky(canvas, start_color='#4beff2', end_color='#3b46c4', tag='sky', duration=5):
+def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky', duration=5):
     '''Makes a color changing sky'''
     # start timer
     start = time.time()
     
     # make morning sky
     setting = 'morning'
-    utilities.make_rectangle(canvas, (0, 0), 2000, 2000, start_color, tag=tag)
+    utilities.make_rectangle(canvas, (0, 0), 2000, 2000, morning_color, tag=tag)
 
     # loop day and night
     while True:
@@ -83,7 +78,7 @@ def make_sky(canvas, start_color='#4beff2', end_color='#3b46c4', tag='sky', dura
             setting = 'night'
 
             # update gui
-            utilities.update_fill_by_tag(canvas, tag, end_color)
+            utilities.update_fill_by_tag(canvas, tag, night_color)
             gui.update()
             continue
 
@@ -94,13 +89,12 @@ def make_sky(canvas, start_color='#4beff2', end_color='#3b46c4', tag='sky', dura
             setting = 'morning'
 
             # update gui
-            utilities.update_fill_by_tag(canvas, tag, start_color)
+            utilities.update_fill_by_tag(canvas, tag, morning_color)
             gui.update()
             continue
 
-        
-
-make_sky(canvas)
+# main
+make_world(canvas)
 
 # canvas.bind('<b-Button-1>', click_handle) # this doesnt work
 # while True:
