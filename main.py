@@ -1,4 +1,5 @@
 from ctypes import util
+from email import utils
 import string
 from tkinter import Canvas, Tk
 import helpers
@@ -27,10 +28,36 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     # make morning sky
     setting = 'morning'
     utilities.make_rectangle(canvas, (0, 0), 2000, 2000, morning_color, tag=tag)
+    helpers.make_cloud(canvas, (200, 300), size=30, tag='cloud1')
+    helpers.make_cloud(canvas, (600, 400), size=100, tag='cloud2')
+    helpers.make_cloud(canvas, (200, 100), size=60, tag='cloud3')
+    helpers.make_cloud(canvas, (600, 250), size=130, tag='cloud4')
 
     # loop day and night
     while True:
         time_elapsed = round(time.time() - start)
+
+        # cloud logic
+        cloud1_left_coord = utilities.get_left(canvas, 'cloud1')
+        if cloud1_left_coord >= window_width:
+            utilities.update_position_by_tag(canvas, 'cloud1', window_width*-1, 0)
+        cloud2_left_coord = utilities.get_left(canvas, 'cloud2')
+        if cloud2_left_coord >= window_width:
+            utilities.update_position_by_tag(canvas, 'cloud2', window_width*-1, 0)
+        cloud3_right_coord = utilities.get_right(canvas, 'cloud3')
+        if cloud3_right_coord <= 0:
+            utilities.update_position_by_tag(canvas, 'cloud3', window_width, 0)
+        cloud4_right_coord = utilities.get_right(canvas, 'cloud4')
+        if cloud4_right_coord <= 0:
+            utilities.update_position_by_tag(canvas, 'cloud4', window_width, 0)
+
+        # animate clouds
+        utilities.update_position_by_tag(canvas, 'cloud1', x=3, y=0)
+        utilities.update_position_by_tag(canvas, 'cloud2', x=3, y=0)
+        utilities.update_position_by_tag(canvas, 'cloud3', x=-3, y=0)
+        utilities.update_position_by_tag(canvas, 'cloud4', x=-3, y=0)
+
+        gui.update()
 
         # morning to night
         if setting == 'morning' and time_elapsed == duration:
@@ -47,6 +74,12 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
             helpers.make_landscape_object(canvas, (1130,600), 125, bark_color='#6b581d', leaves_color='#1c5711')
             helpers.make_landscape_object(canvas, (300,600), 130, bark_color='#6b581d', leaves_color='#1c5711')
             helpers.make_landscape_object(canvas, (1320,600), 50, bark_color='#6b581d', leaves_color='#1c5711')
+
+            # change cloud colors
+            utilities.update_fill_by_tag(canvas, 'cloud1', color='#5c5c5c')
+            utilities.update_fill_by_tag(canvas, 'cloud2', color='#5c5c5c')
+            utilities.update_fill_by_tag(canvas, 'cloud3', color='#5c5c5c')
+            utilities.update_fill_by_tag(canvas, 'cloud4', color='#5c5c5c')
 
             # update gui
             utilities.update_fill_by_tag(canvas, tag, night_color)
@@ -68,6 +101,12 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
             helpers.make_landscape_object(canvas, (1130,600), 125)
             helpers.make_landscape_object(canvas, (300,600), 130)
             helpers.make_landscape_object(canvas, (1320,600), 50)
+
+            # change cloud colors
+            utilities.update_fill_by_tag(canvas, 'cloud1', color='#ffffff')
+            utilities.update_fill_by_tag(canvas, 'cloud2', color='#ffffff')
+            utilities.update_fill_by_tag(canvas, 'cloud3', color='#ffffff')
+            utilities.update_fill_by_tag(canvas, 'cloud4', color='#ffffff')
 
             # update gui
             utilities.update_fill_by_tag(canvas, tag, morning_color)

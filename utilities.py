@@ -279,7 +279,7 @@ def update_position_by_tag(canvas, tag, x=2, y=0):
 def update_fill_by_tag(canvas, tag, color):
     ids = canvas.find_withtag(tag)
     for id in ids:
-        canvas.itemconfig(id, fill=color)
+        canvas.itemconfig(id, fill=color, outline=color)
 
 def delete_by_tag(canvas, tag):
     ids = canvas.find_withtag(tag)
