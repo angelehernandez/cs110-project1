@@ -49,13 +49,13 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     helpers.make_landscape_object(canvas, (1320,600), 50)
 
     # make monkeys
-    helpers.make_creature(canvas, (200, 600), 50, 'monkey1')
+    helpers.make_creature(canvas, (200, 600), 15, 'monkey1')
     monkey1_direction = 'down'
     helpers.make_creature(canvas, (500, 600), 50, 'monkey2')
     monkey2_x_direction = 'right'
-    helpers.make_creature(canvas, (800, 650), 50, 'monkey3')
+    helpers.make_creature(canvas, (800, 650), 25, 'monkey3')
     monkey3_direction = 'up'
-    helpers.make_creature(canvas, (1300, 600), 50, 'monkey4')
+    helpers.make_creature(canvas, (1300, 600), 70, 'monkey4')
     monkey4_x_direction = 'left'
 
     # animation loop
