@@ -7,6 +7,7 @@ import utilities
 import helpers
 import time
 import random
+import math
 
 gui = Tk()
 gui.title('My Terrarium')
@@ -19,6 +20,9 @@ canvas = Canvas(gui, width=window_width,
 canvas.pack()
 
 ########################## YOUR CODE BELOW THIS LINE ##############################
+
+# initialize oscillations
+# oscillations = range
 
 def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky', duration=5):
     '''Makes everything'''
@@ -33,7 +37,7 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     helpers.make_cloud(canvas, (200, 100), size=60, tag='cloud3')
     helpers.make_cloud(canvas, (600, 250), size=130, tag='cloud4')
 
-    # add background
+    # make background
     utilities.make_rectangle(canvas, (0, 750), 2000, 300, '#573a0f')
     helpers.make_landscape_object(canvas, (100,600))
     helpers.make_landscape_object(canvas, (540,600))
@@ -43,7 +47,18 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     helpers.make_landscape_object(canvas, (300,600), 130)
     helpers.make_landscape_object(canvas, (1320,600), 50)
 
-    # loop day and night
+    # make monkeys
+    helpers.make_creature(canvas, (200, 600), 50, 'monkey1')
+    monkey1_direction = 'down'
+    helpers.make_creature(canvas, (500, 600), 50, 'monkey2')
+    monkey2_x_direction = 'right'
+    monkey2_y_direction = 'down'
+    helpers.make_creature(canvas, (800, 650), 50, 'monkey3')
+    monkey3_direction = 'up'
+    helpers.make_creature(canvas, (1300, 600), 50, 'monkey4')
+    monkey4_direction = 'left'
+
+    # animation loop
     while True:
         time_elapsed = round(time.time() - start)
 
@@ -66,6 +81,42 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
         utilities.update_position_by_tag(canvas, 'cloud2', x=3, y=0)
         utilities.update_position_by_tag(canvas, 'cloud3', x=-3, y=0)
         utilities.update_position_by_tag(canvas, 'cloud4', x=-3, y=0)
+
+        # monkey1 logic
+        monkey1_y_position = utilities.get_bottom(canvas, 'monkey1')
+        if monkey1_direction == 'down':
+            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=1)
+            if monkey1_y_position > 750:
+                monkey1_direction = 'up'
+        if monkey1_direction == 'up':
+            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=-1)
+            if monkey1_y_position < 700:
+                monkey1_direction = 'down'
+
+        # monkey2 logic
+        monkey2_x_position = utilities.get_left(canvas, 'monkey2')
+        if monkey2_x_direction == 'right':
+            utilities.update_position_by_tag(canvas, 'monkey2', x=1, y=0)
+            if monkey2_x_position > 550:
+                monkey2_x_direction = 'left'
+        if monkey2_x_direction == 'left':
+            print('moving left')
+            utilities.update_position_by_tag(canvas, 'monkey2', x=-1, y=0)
+            if monkey2_x_position < 450:
+                monkey2_x_direction = 'right'
+
+        # monkey3 logic
+        monkey3_y_position = utilities.get_bottom(canvas, 'monkey3')
+        if monkey3_direction == 'down':
+            utilities.update_position_by_tag(canvas, 'monkey3', x=0, y=1)
+            if monkey3_y_position > 750:
+                monkey3_direction = 'up'
+        if monkey3_direction == 'up':
+            utilities.update_position_by_tag(canvas, 'monkey3', x=0, y=-1)
+            if monkey3_y_position < 700:
+                monkey3_direction = 'down'
+
+        # monkey4 logic
 
         gui.update()
 
