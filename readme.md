@@ -22,4 +22,3 @@ Monkeys swing around the landscape, requiring sinusoidal position updates in the
 The background changes colors depending on the time of day. Objects, and the sky, get darker at night.
 - sky changes colors
 - clouds change colors
-- trees change colors
