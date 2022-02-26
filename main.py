@@ -52,11 +52,10 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     monkey1_direction = 'down'
     helpers.make_creature(canvas, (500, 600), 50, 'monkey2')
     monkey2_x_direction = 'right'
-    monkey2_y_direction = 'down'
     helpers.make_creature(canvas, (800, 650), 50, 'monkey3')
     monkey3_direction = 'up'
     helpers.make_creature(canvas, (1300, 600), 50, 'monkey4')
-    monkey4_direction = 'left'
+    monkey4_x_direction = 'left'
 
     # animation loop
     while True:
@@ -94,13 +93,12 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
                 monkey1_direction = 'down'
 
         # monkey2 logic
-        monkey2_x_position = utilities.get_left(canvas, 'monkey2')
+        monkey2_x_position = utilities.get_center(canvas, 'monkey2')
         if monkey2_x_direction == 'right':
             utilities.update_position_by_tag(canvas, 'monkey2', x=1, y=0)
             if monkey2_x_position > 550:
                 monkey2_x_direction = 'left'
         if monkey2_x_direction == 'left':
-            print('moving left')
             utilities.update_position_by_tag(canvas, 'monkey2', x=-1, y=0)
             if monkey2_x_position < 450:
                 monkey2_x_direction = 'right'
@@ -117,6 +115,15 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
                 monkey3_direction = 'down'
 
         # monkey4 logic
+        monkey4_x_position = utilities.get_center(canvas, 'monkey4')
+        if monkey4_x_direction == 'right':
+            utilities.update_position_by_tag(canvas, 'monkey4', x=2, y=0)
+            if monkey4_x_position > 1350:
+                monkey4_x_direction = 'left'
+        if monkey4_x_direction == 'left':
+            utilities.update_position_by_tag(canvas, 'monkey4', x=-2, y=0)
+            if monkey4_x_position < 1100:
+                monkey4_x_direction = 'right'
 
         gui.update()
 
