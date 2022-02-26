@@ -84,11 +84,11 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
         # monkey1 logic
         monkey1_y_position = utilities.get_bottom(canvas, 'monkey1')
         if monkey1_direction == 'down':
-            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=1)
+            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=4)
             if monkey1_y_position > 750:
                 monkey1_direction = 'up'
         if monkey1_direction == 'up':
-            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=-1)
+            utilities.update_position_by_tag(canvas, 'monkey1', x=0, y=-4)
             if monkey1_y_position < 700:
                 monkey1_direction = 'down'
 
@@ -117,11 +117,11 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
         # monkey4 logic
         monkey4_x_position = utilities.get_center(canvas, 'monkey4')
         if monkey4_x_direction == 'right':
-            utilities.update_position_by_tag(canvas, 'monkey4', x=2, y=0)
+            utilities.update_position_by_tag(canvas, 'monkey4', x=3, y=0)
             if monkey4_x_position > 1350:
                 monkey4_x_direction = 'left'
         if monkey4_x_direction == 'left':
-            utilities.update_position_by_tag(canvas, 'monkey4', x=-2, y=0)
+            utilities.update_position_by_tag(canvas, 'monkey4', x=-3, y=0)
             if monkey4_x_position < 1100:
                 monkey4_x_direction = 'right'
 
