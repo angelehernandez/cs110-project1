@@ -45,7 +45,14 @@ def make_landscape_object(canvas, center, size=75, tag='untagged', bark_color='#
     utilities.make_oval(canvas, (center[0]+size/3,center[1]-size/2), size, size/2, leaves_color, outline=leaves_color)
 
 def make_cloud(canvas, center, speed=0, size=40, tag='untagged', color='#ffffff'):
-    '''Makes a moving cloud'''
     # make cloud
     utilities.make_oval(canvas, center, size, size/2, color, tag, outline=color)
     utilities.make_circle(canvas, (center[0], center[1]-size/2), size/2, color, tag, outline=color)
+
+def make_sun(canvas, center, size=100, tag='sun', color="#e5ff00"):
+    # make sun
+    utilities.make_circle(canvas, center, size, color, tag, outline=color)
+
+def make_moon(canvas, center, size=50, tag='moon', color="#ffffff"):
+    # make moon
+    utilities.make_circle(canvas, center, size, color, tag, outline=color)

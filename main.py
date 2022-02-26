@@ -38,6 +38,7 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
     helpers.make_cloud(canvas, (600, 250), size=130, tag='cloud4')
 
     # make background
+    helpers.make_sun(canvas, (1250, 200))
     utilities.make_rectangle(canvas, (0, 750), 2000, 300, '#573a0f')
     helpers.make_landscape_object(canvas, (100,600))
     helpers.make_landscape_object(canvas, (540,600))
@@ -139,6 +140,10 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
             utilities.update_fill_by_tag(canvas, 'cloud3', color='#5c5c5c')
             utilities.update_fill_by_tag(canvas, 'cloud4', color='#5c5c5c')
 
+            # change sky
+            utilities.delete_by_tag(canvas, 'sun')
+            helpers.make_moon(canvas, (100, 100))
+
             # update gui
             utilities.update_fill_by_tag(canvas, tag, night_color)
             gui.update()
@@ -155,6 +160,10 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
             utilities.update_fill_by_tag(canvas, 'cloud2', color='#ffffff')
             utilities.update_fill_by_tag(canvas, 'cloud3', color='#ffffff')
             utilities.update_fill_by_tag(canvas, 'cloud4', color='#ffffff')
+
+            # change sky
+            utilities.delete_by_tag(canvas, 'moon')
+            helpers.make_sun(canvas, (1250, 200))
 
             # update gui
             utilities.update_fill_by_tag(canvas, tag, morning_color)

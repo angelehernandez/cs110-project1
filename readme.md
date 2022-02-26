@@ -13,6 +13,11 @@ Cloud move around the sky. Monkeys swing around the landscape.
 - monkeys oscillate up and down at varying speeds
 - monkeys oscillate side to side at varying speeds
 
+## Periodically add or remove landscape objects
+The day and night cycle with the sun and moon.
+- at the end of day time, sun is deleted and moon is added
+- at the end of night time, moon is deleted and sun is added
+
 ## Creature or landscape periodically change colors
 The background changes colors depending on the time of day. Objects, and the sky, get darker at night.
 - sky changes colors
