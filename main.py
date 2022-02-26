@@ -40,13 +40,13 @@ def make_world(canvas, morning_color='#4beff2', night_color='#3b46c4', tag='sky'
 
             # add background
             utilities.make_rectangle(canvas, (0, 750), 2000, 300, '#573a0f')
-            helpers.make_landscape_object(canvas, (100,600))
-            helpers.make_landscape_object(canvas, (540,600))
-            helpers.make_landscape_object(canvas, (700,600), 110)
-            helpers.make_landscape_object(canvas, (900,600), 90)
-            helpers.make_landscape_object(canvas, (1130,600), 125)
-            helpers.make_landscape_object(canvas, (300,600), 130)
-            helpers.make_landscape_object(canvas, (1320,600), 50)
+            helpers.make_landscape_object(canvas, (100,600), bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (540,600), bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (700,600), 110, bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (900,600), 90, bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (1130,600), 125, bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (300,600), 130, bark_color='#6b581d', leaves_color='#1c5711')
+            helpers.make_landscape_object(canvas, (1320,600), 50, bark_color='#6b581d', leaves_color='#1c5711')
 
             # update gui
             utilities.update_fill_by_tag(canvas, tag, night_color)

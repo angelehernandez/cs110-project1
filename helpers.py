@@ -33,8 +33,6 @@ def make_creature(canvas, center, size=100, tag='untagged', primary_color='#6543
     mouth_size = size/18
     utilities.make_circle(canvas, mouth_position, mouth_size, '#000000', tag=tag)
 
-
-
 def make_landscape_object(canvas, center, size=75, tag='untagged', bark_color='#d4b863', leaves_color='#3b912c'):
     '''Makes a tree
     Changing the size changes the size of the leaves'''
