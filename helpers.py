@@ -35,8 +35,13 @@ def make_creature(canvas, center, size=100, tag='untagged', primary_color='#6543
 
 
 
-def make_landscape_object(canvas, position, size=100):
-    # your code to create your creature goes here:
-    # replace the code below...
-    print('make_landscape_object...')
-    print('size:', size, 'center:', position)
+def make_landscape_object(canvas, center, size=75, tag='untagged', bark_color='#d4b863', leaves_color='#3b912c'):
+    '''Makes a tree
+    Changing the size changes the size of the leaves'''
+    # make trunk
+    utilities.make_rectangle(canvas, center, 50, 160, bark_color)
+
+    # make leaves
+    utilities.make_oval(canvas, (center[0]+0,center[1]+0), size, size/2, leaves_color)
+    utilities.make_oval(canvas, (center[0]+size/2,center[1]+0), size, size/2, leaves_color)
+    utilities.make_oval(canvas, (center[0]+size/3,center[1]-size/2), size, size/2, leaves_color)
